@@ -1,5 +1,7 @@
 import React from "react";
+import Card from "./components/Card";
 import axios from "axios";
+
 // import logo from "./logo.svg";
 // import "./App.css";
 
@@ -18,7 +20,7 @@ class App extends React.Component {
     console.log(this.state.data);
     return (
       <div className="App">
-        <h1>gh</h1>
+        <Card hacker={this.state.data} />
       </div>
     );
   }
