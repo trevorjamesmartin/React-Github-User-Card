@@ -2,10 +2,6 @@ import React from "react";
 import { withRouter, NavLink } from "react-router-dom";
 
 class Card extends React.Component {
-  // handleClick = () => {
-  //   this.props.history.push("/" + this.props.hacker.login);
-  //   this.props.triggerRefresh();
-  // };
   render() {
     return (
       <div className="CardFace">
@@ -41,7 +37,7 @@ class Card extends React.Component {
               <hr width="100%" />
               <h4>{this.props.hacker.login}</h4>
             </div>
-            <NavLink to={"/" + this.props.hacker.login}>
+            <NavLink to={"/" + this.props.hacker.login + "/keepers"}>
               <img
                 src={this.props.hacker.avatar_url}
                 alt="avatar"

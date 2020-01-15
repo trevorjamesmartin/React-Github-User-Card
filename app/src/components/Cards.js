@@ -5,38 +5,26 @@ import axios from "axios";
 class Cards extends React.Component {
   constructor(props) {
     super(props);
-    var location = window.location.pathname;
     this.state = {
       hackers: [],
-      hq: `https://api.github.com/users${location}/followers`,
-      busy: false
+      hq: this.followersURL()
     };
   }
   followersURL = () => {
-    const nxt = window.location.pathname.split("/").pop();
-    return `https://api.github.com/users${nxt}/followers`;
+    const elite = window.location.pathname.split("/")[1];
+    return `https://api.github.com/users/${elite}/followers`;
   };
 
   componentDidMount() {
-    console.log(`loading cards from ${this.state.hq}`);
     this.refresh();
   }
-  updateOnce() {
-    this.setState({
-      busy: true,
-      hq: this.followersURL()
-    }); // prevent
-    this.refresh();
-  }
+
   componentDidUpdate() {
-    if (this.state.busy) return;
-    const a = window.location.pathname.split("/").pop();
+    const a = window.location.pathname.split("/")[1];
     const b = this.state.hq.split("/");
     const samePage = b.includes(a);
     if (samePage) return;
-    console.log("app needs to refresh");
-    this.updateOnce();
-    // dont set state inside here
+    this.props.changeUser(a);
   }
 
   refresh() {
@@ -47,13 +35,7 @@ class Cards extends React.Component {
         alert(err);
       });
   }
-  triggerRefresh = () => {
-    var location = window.location.pathname;
-    if (this.state.hq === this.followersURL()) return;
-    console.log("trigger refresh");
-    this.setState({ hq: `https://api.github.com/users${location}/followers` });
-    this.refresh();
-  };
+
   render() {
     return (
       <div className="Hackers">

@@ -1,16 +1,14 @@
 import React from "react";
 import Cards from "./Cards";
-// import axios from "axios";
 
 class Table extends React.Component {
-  constructor(props) {
-    super(props);
-    console.log("Table constructed");
-  }
   render() {
     return (
       <React.Fragment>
-        <Cards loadURL={this.props.data.followers_url} />
+        <Cards
+          loadURL={this.props.data.followers_url}
+          changeUser={this.props.changeUser}
+        />
         <a
           target="_blank"
           rel="noopener noreferrer"

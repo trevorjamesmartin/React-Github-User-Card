@@ -1,7 +1,6 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Table from "./components/Table";
-import axios from "axios";
 import { loadMemory, storeMemory } from "./services/persistence";
 
 class App extends React.Component {
@@ -11,26 +10,15 @@ class App extends React.Component {
     data: loadMemory(),
     refresh: false
   };
-  constructor() {
-    super();
-    console.log("App constructor");
-  }
   persist = data => {
     this.setState({ data }); // set the state
     storeMemory(data); // bake the cookies
   };
-  componentDidMount() {
-    // debugger;
-    var location = window.location.pathname;
-    if (!this.state.uname === location) {
-      const url = [this.state.baseURL, location].join("");
-      this.setState({ uname: location });
-      axios.get(url).then(result => {
-        this.persist(result.data);
-      });
-    }
-  }
-  hacker = () => this.state.data || ["wtf"];
+  changeUser = uname => {
+    this.setState({ uname });
+    return [this.state.baseURL, uname].join("");
+  };
+
   render() {
     return (
       <div className="App">
@@ -38,15 +26,16 @@ class App extends React.Component {
           <Route
             path="/"
             exact
-            component={() => <Redirect to="/debauchery1st" />}
+            component={() => <Redirect to="/debauchery1st/keepers" />}
           />
           <Route
-            path="/:id/"
+            path="/:id/keepers"
             component={() => (
               <Table
                 id={this.state.uname}
                 data={this.state.data}
                 persist={this.persist}
+                changeUser={this.changeUser}
               />
             )}
           />
