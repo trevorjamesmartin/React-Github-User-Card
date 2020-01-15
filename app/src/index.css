@@ -21,7 +21,6 @@ h2 {
 }
 .Fluxx {
   border-radius: 0.5rem;
-  opacity: 90%;
   margin: 1rem;
   box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);
   cursor: pointer;
