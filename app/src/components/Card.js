@@ -1,6 +1,11 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 
 class Card extends React.Component {
+  handleClick = () => {
+    this.props.history.push("/" + this.props.hacker.login);
+    this.props.triggerRefresh();
+  };
   render() {
     return (
       <div className="CardFace">
@@ -34,6 +39,7 @@ class Card extends React.Component {
               src={this.props.hacker.avatar_url}
               alt="avatar"
               className="HackerImg"
+              onClick={this.handleClick}
             />
             <ul className="Hackers" />
           </section>
@@ -43,4 +49,4 @@ class Card extends React.Component {
   }
 }
 
-export default Card;
+export default withRouter(Card);

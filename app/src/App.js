@@ -1,4 +1,5 @@
 import React from "react";
+import { Switch, Route, Redirect } from "react-router-dom";
 import Table from "./components/Table";
 import axios from "axios";
 import { loadMemory, storeMemory } from "./services/persistence";
@@ -6,7 +7,7 @@ import { loadMemory, storeMemory } from "./services/persistence";
 class App extends React.Component {
   state = {
     baseURL: `https://api.github.com/users/`,
-    uname: "debauchery1st",
+    uname: "",
     data: loadMemory(),
     refresh: false
   };
@@ -19,25 +20,37 @@ class App extends React.Component {
     storeMemory(data); // bake the cookies
   };
   componentDidMount() {
-    const data = loadMemory();
-    if (data.login === this.state.uname && !this.state.refresh) {
-      console.log(`loading from cache`);
-      this.setState({ data });
-      return;
+    // debugger;
+    var location = window.location.pathname;
+    if (!this.state.uname === location) {
+      const url = [this.state.baseURL, location].join("");
+      this.setState({ uname: location });
+      axios.get(url).then(result => {
+        this.persist(result.data);
+      });
     }
-    // Otherwise, make the HTTP GET request
-    const url = [this.state.baseURL, this.state.uname || "debauchery1st"].join(
-      ""
-    );
-    axios.get(url).then(result => {
-      this.persist(result.data);
-    });
   }
   hacker = () => this.state.data || ["wtf"];
   render() {
     return (
       <div className="App">
-        <Table data={this.state.data} persist={this.persist} />
+        <Switch>
+          <Route
+            path="/"
+            exact
+            component={() => <Redirect to="/debauchery1st" />}
+          />
+          <Route
+            path="/:id/"
+            component={() => (
+              <Table
+                id={this.state.uname}
+                data={this.state.data}
+                persist={this.persist}
+              />
+            )}
+          />
+        </Switch>
       </div>
     );
   }
