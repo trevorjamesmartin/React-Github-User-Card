@@ -18,5 +18,23 @@ code {
   margin: 0.5rem;
   box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);
   cursor: pointer;
-  width: 15%;
+  width: 10rem;
+}
+.HackerImg:hover {
+  margin: 0.25rem;
+  border: 0.25rem solid green;
+}
+.HackerImg:active {
+  box-shadow: 0 5px 3px rgba(0, 0, 0, 0.7);
+}
+.Hacker {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.Hackers {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
 }

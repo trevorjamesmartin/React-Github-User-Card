@@ -5,11 +5,12 @@ class Card extends React.Component {
     return (
       <section className="Hacker">
         <h1>{this.props.hacker.name}</h1>
-        <img src={this.props.hacker.avatar_url} className="HackerImg" />
-        <ul>
-          <li>followers {this.props.hacker.followers}</li>
-          <li>following {this.props.hacker.following}</li>
-        </ul>
+        <img
+          src={this.props.hacker.avatar_url}
+          alt="avatar"
+          className="HackerImg"
+        />
+        <ul className="Hackers" />
       </section>
     );
   }
