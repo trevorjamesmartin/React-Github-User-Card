@@ -19,11 +19,14 @@ class Cards extends React.Component {
     axios
       .get(this.state.hq)
       .then(result => this.setState({ hackers: result.data }))
-      .catch(err => console.log(err));
+      .catch(err => {
+        alert(err);
+      });
   }
   triggerRefresh = () => {
-    console.log("trigger refresh");
     var location = window.location.pathname;
+    if (this.state.hq.split("/").includes(location)) return;
+    console.log("trigger refresh");
     this.setState({ hq: `https://api.github.com/users${location}/followers` });
     this.refresh();
   };

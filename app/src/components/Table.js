@@ -5,16 +5,12 @@ import Cards from "./Cards";
 class Table extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      cards: [],
-      url: this.props.data.followers_url
-    };
     console.log("Table constructed");
   }
   render() {
     return (
       <React.Fragment>
-        <Cards loadURL={this.state.url} />
+        <Cards loadURL={this.props.data.followers_url} />
       </React.Fragment>
     );
   }
