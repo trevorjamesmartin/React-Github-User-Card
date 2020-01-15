@@ -28,16 +28,13 @@ h2 {
 }
 .HackerImg {
   border-radius: 0.5rem;
-  opacity: 90%;
   margin: 0.5rem 0;
   box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);
   cursor: pointer;
   width: 10rem;
 }
 .HackerImg:hover {
-  opacity: 100%;
-  /* margin: 0.25rem; */
-  /* border: 0.25rem solid green; */
+  box-shadow: 0 15px 10px green;
 }
 .HackerImg:active {
   box-shadow: 0 5px 3px rgba(0, 0, 0, 0.7);
