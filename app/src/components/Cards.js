@@ -19,9 +19,9 @@ class Cards extends React.Component {
   render() {
     return (
       <div className="Hackers">
-        {this.state.hackers.map((hacker, idx) => (
-          <Card key={idx} hacker={hacker} />
-        ))}
+        {this.state.hackers.map((hacker, idx) => {
+          return <Card key={idx} hacker={hacker} />;
+        })}
       </div>
     );
   }

@@ -4,7 +4,7 @@ class Card extends React.Component {
   render() {
     return (
       <section className="Hacker">
-        <h1>{this.props.hacker.name}</h1>
+        <h1>{this.props.hacker.login}</h1>
         <img
           src={this.props.hacker.avatar_url}
           alt="avatar"
