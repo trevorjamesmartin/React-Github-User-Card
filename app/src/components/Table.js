@@ -18,7 +18,9 @@ class Table extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Card hacker={this.props.data} />
+        <section className="Lead-Git-r">
+          <Card hacker={this.props.data} />
+        </section>
         <Cards
           loadURL={`https://api.github.com/users/${this.props.data.login}/followers`}
         />
