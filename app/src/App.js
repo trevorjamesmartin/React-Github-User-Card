@@ -25,7 +25,10 @@ class App extends React.Component {
       this.setState({ data });
       return;
     }
-    const url = [this.state.baseURL, this.state.uname].join("");
+    // Otherwise, make the HTTP GET request
+    const url = [this.state.baseURL, this.state.uname || "debauchery1st"].join(
+      ""
+    );
     axios.get(url).then(result => {
       this.persist(result.data);
     });

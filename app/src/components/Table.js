@@ -7,7 +7,8 @@ class Table extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      cards: []
+      cards: [],
+      url: `https://api.github.com/users/${this.props.data.login}/followers`
     };
     console.log("Table constructed");
   }
@@ -21,9 +22,7 @@ class Table extends React.Component {
         <section className="Lead-Git-r">
           <Card hacker={this.props.data} />
         </section>
-        <Cards
-          loadURL={`https://api.github.com/users/${this.props.data.login}/followers`}
-        />
+        <Cards loadURL={this.state.url} />
       </React.Fragment>
     );
   }

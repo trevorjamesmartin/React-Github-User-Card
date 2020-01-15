@@ -9,7 +9,7 @@
      http://127.0.0.1:3000/
 */
 const store = window.localStorage;
-const storeKey = "8675309";
+const storeKey = "flx1111";
 const storeMemory = o => store.setItem(storeKey, JSON.stringify(o));
 const loadMemory = () => JSON.parse(store.getItem(storeKey)) || [];
 

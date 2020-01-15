@@ -28,7 +28,7 @@ class Card extends React.Component {
             <div>
               <h2>Keeper</h2>
               <hr width="100%" />
-              <h2>{this.props.hacker.login}</h2>
+              <h4>{this.props.hacker.login}</h4>
             </div>
             <img
               src={this.props.hacker.avatar_url}
