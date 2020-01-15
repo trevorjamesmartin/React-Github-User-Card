@@ -1,11 +1,11 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, NavLink } from "react-router-dom";
 
 class Card extends React.Component {
-  handleClick = () => {
-    this.props.history.push("/" + this.props.hacker.login);
-    this.props.triggerRefresh();
-  };
+  // handleClick = () => {
+  //   this.props.history.push("/" + this.props.hacker.login);
+  //   this.props.triggerRefresh();
+  // };
   render() {
     return (
       <div className="CardFace">
@@ -41,12 +41,13 @@ class Card extends React.Component {
               <hr width="100%" />
               <h4>{this.props.hacker.login}</h4>
             </div>
-            <img
-              src={this.props.hacker.avatar_url}
-              alt="avatar"
-              className="HackerImg"
-              onClick={this.handleClick}
-            />
+            <NavLink to={"/" + this.props.hacker.login}>
+              <img
+                src={this.props.hacker.avatar_url}
+                alt="avatar"
+                className="HackerImg"
+              />
+            </NavLink>
           </section>
         </div>
       </div>
