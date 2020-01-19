@@ -24,11 +24,6 @@ class App extends React.Component {
       <div className="App">
         <Switch>
           <Route
-            path="/"
-            exact
-            component={() => <Redirect to="/debauchery1st/keepers" />}
-          />
-          <Route
             path="/:id/keepers"
             component={() => (
               <Table
@@ -38,6 +33,11 @@ class App extends React.Component {
                 changeUser={this.changeUser}
               />
             )}
+          />
+          <Route
+            path="/"
+            exact
+            component={() => <Redirect to="/debauchery1st/keepers" />}
           />
         </Switch>
       </div>
