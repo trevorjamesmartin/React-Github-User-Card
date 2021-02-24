@@ -37,7 +37,7 @@ class App extends React.Component {
           <Route
             path="/"
             exact
-            component={() => <Redirect to="/debauchery1st/keepers" />}
+            component={() => <Redirect to=`/${process.env.USERNAME}/keepers`/>}
           />
         </Switch>
       </div>
